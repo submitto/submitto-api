@@ -1,25 +1,24 @@
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import Message from '../infra/typeorm/schemas/Message';
-import IMessagesRepository from '../repositories/IMessagesRepository';
+// import IMessagesRepository from '../repositories/IMessagesRepository';
 
-interface IRequest {
-  from: string;
+// interface IRequest {
+//   from: string;
 
-  to: string;
+//   to: string;
 
-  body: string;
+//   body: string;
 
-  recipient_id: string;
-
-  id: string;
-}
+//   user_id: string;
+// }
 
 @injectable()
 export default class CreateMessageService {
   constructor(
-    @inject('MessagesRepository')
-    private messagesRepository: IMessagesRepository,
+    @inject('SMSProvider')
+    private smsProvider: ISMSProvider,
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -29,16 +28,21 @@ export default class CreateMessageService {
     from,
     to,
     body,
-    recipient_id,
-    id,
+    user_id,
   }: IRequest): Promise<Message> {
-    const user = this.usersRepository.findById(id);
+    const user = await this.usersRepository.findById(user_id);
+
+    const userId = user?.id;
+
+    if (!userId) {
+      throw new AppError('user does not exists');
+    }
 
     const message = await this.messagesRepository.create({
       from,
       to,
       body,
-      recipient_id: id,
+      recipient_id: userId,
     });
 
     return message;

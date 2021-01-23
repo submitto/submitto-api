@@ -1,6 +1,6 @@
 import ICreateMessageDTO from '@modules/messages/dtos/ICreateMessageDTO';
 import Message from '@modules/messages/infra/typeorm/schemas/Message';
-import { ObjectID } from 'typeorm';
+import { uuid } from 'uuidv4';
 import IMessagesRepository from '../IMessagesRepository';
 
 export default class FakeMessagesRepository implements IMessagesRepository {
@@ -15,7 +15,7 @@ export default class FakeMessagesRepository implements IMessagesRepository {
     const message = new Message();
 
     Object.assign(message, {
-      id: new ObjectID(),
+      id: uuid(),
       from,
       to,
       body,
