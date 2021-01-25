@@ -2,19 +2,14 @@ import { container } from 'tsyringe';
 
 import '@modules/users/providers';
 
-import './providers';
-
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
-// import IMessagesRepository from '@modules/messages/repositories/IMessagesRepository';
-// import MessagesRepository from '@modules/messages/infra/typeorm/repositories/MessagesRepository';
+import ISMSProvider from './providers/SMSProvider/models/ISMSProvider';
+import SNSSMSProvider from './providers/SMSProvider/implementations/SNSSMSProvider';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
 );
 
-// container.registerSingleton<IMessagesRepository>(
-//   'MessagesRepository',
-//   MessagesRepository,
-// );
+container.registerSingleton<ISMSProvider>('SMSProvider', SNSSMSProvider);

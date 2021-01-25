@@ -7,25 +7,16 @@ import {
   ObjectIdColumn,
 } from 'typeorm';
 
-@Entity('messages')
-class Notification {
+@Entity('sms')
+class SMS {
   @ObjectIdColumn()
   id: ObjectID;
 
   @Column()
-  from: string;
+  message: string;
 
   @Column()
-  to: string;
-
-  @Column()
-  body: string;
-
-  @Column('uuid')
-  recipient_id: string;
-
-  @Column({ default: false })
-  read: boolean;
+  phone: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -34,4 +25,4 @@ class Notification {
   updated_at: Date;
 }
 
-export default Notification;
+export default SMS;
