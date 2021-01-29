@@ -9,8 +9,8 @@ export default class KeyController {
 
     const showUserKey = container.resolve(ShowUserKeyService);
 
-    const sub = await showUserKey.execute({ user_id });
+    const token = await showUserKey.execute({ user_id });
 
-    return response.json(classToClass(sub));
+    return response.json(classToClass(token));
   }
 }

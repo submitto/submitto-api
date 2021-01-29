@@ -23,7 +23,7 @@ describe('ShowUserKey', () => {
       user_id: user.id,
     });
 
-    expect(response).toHaveProperty('sub');
+    expect(response).toHaveProperty('token');
     expect(response.user).toEqual(user);
   });
 

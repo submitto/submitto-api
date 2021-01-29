@@ -13,7 +13,7 @@ interface IRequest {
 
 interface IResponse {
   user: User;
-  sub: string;
+  token: string;
 }
 
 @injectable()
@@ -37,9 +37,7 @@ class ShowUserKeyService {
       expiresIn,
     });
 
-    const sub = token.split('.')[2];
-
-    return { user, sub };
+    return { user, token };
   }
 }
 
