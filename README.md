@@ -19,7 +19,7 @@
 
 - This API provides a simple service of sending s SMS for any cellphone number in any place in the world, for free.
 
-- This project still and current development an it is no available yet.
+- This project still in development an it's funcionalities is no available yet.
 
 ## 🚀 Technologies
 
