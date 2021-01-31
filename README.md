@@ -13,7 +13,7 @@
 </p>
 
 
-## 💇🏻‍♂️ About the project
+## About the project
 
 - Submitto is a API of SMS sender based on AWS SNS service, it's goal is to send SMS messages in a easy an pratical way.
 
