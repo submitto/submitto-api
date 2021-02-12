@@ -1,6 +1,6 @@
-import 'reflect-metadata';
-
 import * as dotenv from 'dotenv';
+
+import 'reflect-metadata';
 
 import express, { Request, Response, NextFunction } from 'express';
 
